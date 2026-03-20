@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>James Dane — Contact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:        #c9a96e;
+      --gold-light:  #e8d5a3;
+      --gold-dark:   #9a7540;
+      --deep:        #0d0d14;
+      --card-bg:     #15141f;
+      --card-inner:  #1c1b2a;
+      --text-bright: #f0ead8;
+      --text-muted:  #8a7f6a;
+      --divider:     rgba(201,169,110,.18);
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+    }
+
+    /* ─────────────────────────────
+       DESKTOP: centred phone mockup
+       ───────────────────────────── */
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--deep);
+      background-image: radial-gradient(ellipse 60% 55% at 50% 40%, rgba(201,169,110,.07) 0%, transparent 70%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    /* Phone shell — desktop only */
+    .phone {
+      width: 340px;
+      max-width: 100%;
+      background: linear-gradient(160deg, #2a2740 0%, #0e0d18 100%);
+      border-radius: 46px;
+      padding: 13px;
+      box-shadow:
+        0 0 0 1px rgba(201,169,110,.22),
+        0 0 0 2px rgba(0,0,0,.6),
+        0 40px 100px rgba(0,0,0,.8),
+        inset 0 1px 0 rgba(201,169,110,.12);
+      flex-shrink: 0;
+    }
+
+    /* thin gold notch bar */
+    .phone::before {
+      content: '';
+      display: block;
+      width: 72px; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      border-radius: 2px;
+      margin: 0 auto 10px;
+      opacity: .7;
+    }
+
+    .phone-screen {
+      background: var(--card-bg);
+      border-radius: 36px;
+      overflow: hidden;
+    }
+
+    /* ── Hero photo ── */
+    .hero {
+      width: 100%;
+      aspect-ratio: 3 / 3.2;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      filter: brightness(.92) contrast(1.04);
+    }
+
+    /* dark gradient at bottom of photo */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(13,12,20,.92) 100%);
+      z-index: 1;
+    }
+
+    /* scallop wave */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 52px;
+      background: var(--card-bg);
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      z-index: 2;
+    }
+
+    /* ── Info card body ── */
+    .card-body {
+      padding: 0 1.25rem 1.4rem;
+    }
+
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.65rem;
+      font-weight: 600;
+      color: var(--text-bright);
+      letter-spacing: .03em;
+      margin-bottom: .15rem;
+    }
+
+    .card-title {
+      font-size: .72rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: .15rem;
+    }
+
+    .card-company {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .92rem;
+      color: var(--gold);
+      letter-spacing: .06em;
+      margin-bottom: 1.1rem;
+    }
+
+    .card-divider {
+      height: 1px;
+      background: var(--divider);
+      margin-bottom: 1rem;
+    }
+
+    /* ── Action buttons ── */
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: .5rem;
+      margin-bottom: .9rem;
+    }
+
+    .action-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .35rem;
+      background: var(--card-inner);
+      border: 1px solid rgba(201,169,110,.12);
+      border-radius: 12px;
+      padding: .7rem .3rem .55rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .22s, border-color .22s, transform .18s;
+      min-width: 0;       /* prevent grid blowout */
+    }
+    .action-btn:active,
+    .action-btn:hover {
+      background: rgba(201,169,110,.1);
+      border-color: rgba(201,169,110,.35);
+      transform: translateY(-2px);
+    }
+
+    .action-btn svg {
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+    }
+
+    .action-btn span {
+      font-size: .65rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: .03em;
+      white-space: nowrap;
+    }
+
+    .icon-call  { color: #e8c87a; }
+    .icon-email { color: #c9a96e; }
+    .icon-web   { color: #a8cce0; }
+    .icon-fb    { color: #8ab4d4; }
+
+    /* ── Save Contact ── */
+    .save-btn {
+      display: block;
+      width: 100%;
+      padding: .85rem 1rem;
+      background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 60%, var(--gold-light) 100%);
+      color: #0d0c14;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(201,169,110,.28);
+      transition: opacity .2s, transform .18s, box-shadow .2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .save-btn:active,
+    .save-btn:hover {
+      opacity: .9;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 26px rgba(201,169,110,.42);
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 1.2rem;
+      font-size: .7rem;
+      color: rgba(201,169,110,.45);
+      text-decoration: none;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: color .2s;
+      padding-bottom: .5rem;
+    }
+    .back-link:hover,
+    .back-link:active { color: var(--gold); }
+
+    /* ─────────────────────────────
+       MOBILE: full-screen native card
+       ───────────────────────────── */
+    @media (max-width: 480px) {
+      body {
+        padding: 0;
+        justify-content: flex-start;
+        align-items: stretch;
+        min-height: 100dvh;
+      }
+
+      /* strip the phone shell decorations */
+      .phone {
+        width: 100%;
+        background: none;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+      .phone::before { display: none; }
+
+      .phone-screen {
+        border-radius: 0;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* taller hero on phones */
+      .hero {
+        aspect-ratio: unset;
+        height: 52vmax;
+        max-height: 62vh;
+        flex-shrink: 0;
+      }
+
+      .hero::after { height: 44px; }
+
+      .card-body {
+        flex: 1;
+        padding: 0 1.1rem calc(1.2rem + env(safe-area-inset-bottom));
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card-name  { font-size: 1.55rem; }
+      .card-title { font-size: .7rem; }
+
+      .actions {
+        gap: .45rem;
+        margin-bottom: .85rem;
+      }
+
+      .action-btn { padding: .7rem .25rem .55rem; }
+      .action-btn svg { width: 19px; height: 19px; }
+      .action-btn span { font-size: .62rem; }
+
+      .save-btn { font-size: .8rem; }
+
+      /* push back link to very bottom */
+      .back-link {
+        margin-top: auto;
+        padding: .8rem 0 calc(.9rem + env(safe-area-inset-bottom));
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <div class="phone">
+      <div class="phone-screen">
+
+        <!-- Photo -->
+        <div class="hero">
+          <img src="profile.jpeg" alt="James Dane" />
+        </div>
+
+        <!-- Info -->
+        <div class="card-body">
+          <p class="card-name">James Dane</p>
+          <p class="card-title">Founder | Entrepreneur</p>
+          <p class="card-company">Irenisus</p>
+
+          <div class="card-divider"></div>
+
+          <!-- Action buttons -->
+          <div class="actions">
+
+            <a href="tel:+1234567890" class="action-btn">
+              <!-- Phone icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-call">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+              <span>Call</span>
+            </a>
+
+            <a href="mailto:james@irenisus.com" class="action-btn">
+              <!-- Email icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-email">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="M2 7l10 7 10-7"/>
+              </svg>
+              <span>Email</span>
+            </a>
+
+            <a href="https://irenisus.com" target="_blank" class="action-btn">
+              <!-- Globe icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="icon-web">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+              </svg>
+              <span>Website</span>
+            </a>
+
+            <a href="https://facebook.com/jamesdane" target="_blank" class="action-btn">
+              <!-- Facebook icon -->
+              <svg viewBox="0 0 24 24" fill="currentColor" class="icon-fb">
+                <path d="M22 12a10 10 0 10-11.56 9.87v-6.99H7.9V12h2.54V9.8c0-2.51 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.88h-2.33v6.99A10 10 0 0022 12z"/>
+              </svg>
+              <span>FB</span>
+            </a>
+
+          </div>
+
+          <!-- Save Contact -->
+          <button class="save-btn" onclick="saveContact()">+ Save Contact</button>
+        </div>
+
+      </div>
+    </div>
+
+    <a href="index.html" class="back-link">← Back to James Dane Estates</a>
+  </div>
+
+<script>
+  function saveContact() {
+    var vcfUrl = 'james_dane.vcf';
+    var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    var isAndroid = /Android/i.test(navigator.userAgent);
+
+    if (isIOS) {
+      // iOS Safari: fetch as blob with text/vcard MIME → triggers native Contacts import
+      fetch(vcfUrl)
+        .then(function(r) { return r.blob(); })
+        .then(function(blob) {
+          var typed = new Blob([blob], { type: 'text/vcard' });
+          var url   = URL.createObjectURL(typed);
+          // Open in same window so iOS intercepts and routes to Contacts
+          window.location.href = url;
+        })
+        .catch(function() {
+          // Fallback: direct link (works when hosted on a server with correct MIME)
+          window.location.href = vcfUrl;
+        });
+    } else if (isAndroid) {
+      // Android: fetch → blob download → triggers Contacts import
+      fetch(vcfUrl)
+        .then(function(r) { return r.blob(); })
+        .then(function(blob) {
+          var typed = new Blob([blob], { type: 'text/x-vcard' });
+          var url   = URL.createObjectURL(typed);
+          var a     = document.createElement('a');
+          a.href     = url;
+          a.download = 'James_Dane.vcf';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          setTimeout(function() { URL.revokeObjectURL(url); }, 3000);
+        })
+        .catch(function() {
+          window.location.href = vcfUrl;
+        });
+    } else {
+      // Desktop: plain download
+      var a     = document.createElement('a');
+      a.href     = vcfUrl;
+      a.download = 'James_Dane.vcf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  }
+</script>
+</body>
+</html>

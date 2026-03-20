@@ -194,6 +194,20 @@
       font-style: italic; color: var(--sage); font-size: 1.15rem;
     }
 
+    .contact-card-btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      margin: .6rem 0 1.4rem;
+      padding: .55rem 1.4rem;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold-dark);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .95rem; letter-spacing: .12em;
+      text-transform: uppercase; text-decoration: none;
+      transition: background .3s, color .3s;
+    }
+    .contact-card-btn:hover { background: var(--gold); color: #fff; }
+
     .divider {
       display: flex; align-items: center; gap: 1.5rem;
       max-width: 74rem; margin: 0 auto; padding: 0 2rem;
@@ -576,12 +590,13 @@
       <div class="about-grid">
         <div class="about-img-wrap">
           <div class="about-img">
-            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="James Dane" />
+            <img src="profile.jpeg" alt="James Dane" />
           </div>
         </div>
         <div class="about-text">
           <span class="section-tag">Meet Your Advisor</span>
           <h2>James Dane</h2>
+          <a href="contact.html" class="contact-card-btn">View Contact Card</a>
           <p>With over a decade of experience in the luxury market, James Dane doesn't just sell houses; he matches individuals with lifestyles. Known for his keen eye for architectural excellence and a "client-first" philosophy, James provides a personalised concierge experience to guide you home.</p>
           <blockquote class="about-quote">"Matching the world's finest properties with the people who will call them home."</blockquote>
         </div>
